@@ -1,0 +1,11 @@
+*.tfstate
+*.tfstate.*
+.terraform
+.terraform.lock.hcl
+cdktf.out
+cdktf.json.backup
+*.js
+*.d.ts
+node_modules
+.gen
+

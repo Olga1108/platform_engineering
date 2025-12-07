@@ -1,0 +1,37 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+*.pyc
+__pycache__/
+
+# CDK build outputs
+cdk-localstack-demo/cdk.out/
+cdk-localstack-demo/.cdk.staging/
+
+# Node modules (if any at root)
+node_modules/
+
+# OS files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# LocalStack data (if any)
+.localstack/
+
+# Environment files with secrets (if any)
+.env
+.env.local
+
+# Temporary files
+*.log
+tmp/
+temp/
+

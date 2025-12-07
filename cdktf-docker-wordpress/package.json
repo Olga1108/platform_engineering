@@ -1,0 +1,32 @@
+{
+  "name": "cdktf-docker-wordpress",
+  "version": "0.1.0",
+  "bin": {
+    "cdktf-docker-wordpress": ".gen/bin/cdktf-docker-wordpress"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdktf": "cdktf"
+  },
+  "keywords": [
+    "cdktf",
+    "terraform",
+    "cdk",
+    "docker",
+    "wordpress"
+  ],
+  "author": "",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@cdktf/provider-docker": "^12.0.2",
+    "cdktf": "^0.21.0",
+    "constructs": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
