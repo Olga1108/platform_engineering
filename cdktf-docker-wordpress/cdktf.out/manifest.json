@@ -1,0 +1,27 @@
+{
+  "stacks": {
+    "StackOne": {
+      "annotations": [
+      ],
+      "constructPath": "StackOne",
+      "dependencies": [
+      ],
+      "name": "StackOne",
+      "stackMetadataPath": "stacks/StackOne/metadata.json",
+      "synthesizedStackPath": "stacks/StackOne/cdk.tf.json",
+      "workingDirectory": "stacks/StackOne"
+    },
+    "StackTwo": {
+      "annotations": [
+      ],
+      "constructPath": "StackTwo",
+      "dependencies": [
+      ],
+      "name": "StackTwo",
+      "stackMetadataPath": "stacks/StackTwo/metadata.json",
+      "synthesizedStackPath": "stacks/StackTwo/cdk.tf.json",
+      "workingDirectory": "stacks/StackTwo"
+    }
+  },
+  "version": "0.21.0"
+}

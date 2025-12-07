@@ -1,0 +1,128 @@
+{
+  "//": {
+    "metadata": {
+      "backend": "local",
+      "stackName": "StackOne",
+      "version": "0.21.0"
+    },
+    "outputs": {
+    }
+  },
+  "provider": {
+    "docker": [
+      {
+        "context": "desktop-linux"
+      }
+    ]
+  },
+  "resource": {
+    "docker_container": {
+      "mysql-container": {
+        "//": {
+          "metadata": {
+            "path": "StackOne/mysql-container",
+            "uniqueId": "mysql-container"
+          }
+        },
+        "env": [
+          "MYSQL_ROOT_PASSWORD=rootpass",
+          "MYSQL_DATABASE=wordpress",
+          "MYSQL_USER=wpuser",
+          "MYSQL_PASSWORD=wppass"
+        ],
+        "image": "${docker_image.mysql-image.image_id}",
+        "name": "mysql-StackOne",
+        "networks_advanced": [
+          {
+            "aliases": [
+              "mysql"
+            ],
+            "name": "${docker_network.network.name}"
+          }
+        ],
+        "ports": [
+          {
+            "external": 9081,
+            "internal": 3306
+          }
+        ]
+      },
+      "wordpress-container": {
+        "//": {
+          "metadata": {
+            "path": "StackOne/wordpress-container",
+            "uniqueId": "wordpress-container"
+          }
+        },
+        "depends_on": [
+          "docker_container.mysql-container"
+        ],
+        "env": [
+          "WORDPRESS_DB_HOST=mysql",
+          "WORDPRESS_DB_USER=wpuser",
+          "WORDPRESS_DB_PASSWORD=wppass",
+          "WORDPRESS_DB_NAME=wordpress"
+        ],
+        "image": "${docker_image.wordpress-image.image_id}",
+        "name": "wordpress-StackOne",
+        "networks_advanced": [
+          {
+            "name": "${docker_network.network.name}"
+          }
+        ],
+        "ports": [
+          {
+            "external": 8081,
+            "internal": 80
+          }
+        ]
+      }
+    },
+    "docker_image": {
+      "mysql-image": {
+        "//": {
+          "metadata": {
+            "path": "StackOne/mysql-image",
+            "uniqueId": "mysql-image"
+          }
+        },
+        "keep_locally": false,
+        "name": "mysql:8.0"
+      },
+      "wordpress-image": {
+        "//": {
+          "metadata": {
+            "path": "StackOne/wordpress-image",
+            "uniqueId": "wordpress-image"
+          }
+        },
+        "keep_locally": false,
+        "name": "wordpress:latest"
+      }
+    },
+    "docker_network": {
+      "network": {
+        "//": {
+          "metadata": {
+            "path": "StackOne/network",
+            "uniqueId": "network"
+          }
+        },
+        "name": "wordpress-network-StackOne"
+      }
+    }
+  },
+  "terraform": {
+    "backend": {
+      "local": {
+        "path": "/Users/olga/projects/platform_engineering/cdktf-docker-wordpress/terraform.StackOne.tfstate"
+      }
+    },
+    "required_providers": {
+      "docker": {
+        "source": "kreuzwerker/docker",
+        "version": "3.6.2"
+      }
+    }
+  }
+}
